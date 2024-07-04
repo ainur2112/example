@@ -2,14 +2,23 @@ import allure
 from base.base_page import BasePage
 from config.links import Links
 from selenium.webdriver.support import expected_conditions as EC
-
+from locators.locators_dashboard_page import DashboardPageLocators
 
 class DashboardPage(BasePage):
 
     PAGE_URL = Links.DASHBOARD_PAGE
-    MY_INFO_BUTTON = ("xpath", "//span[text()='My Info']")
+
+    @allure.step("Click and fill  Search field ")
+    def click_and_fill_search_menu(self,name_menu):
+        search_field = self.wait.until(EC.element_to_be_clickable(DashboardPageLocators.SEARCH_FIELD))
+        search_field.click()
+        search_field.send_keys(name_menu)
+
+    def click_admin_menu(self):
+        self.wait.until((EC.element_to_be_clickable(DashboardPageLocators.ADMIN_SPAN))).click()
 
 
     @allure.step("Click on 'My Info' link")
     def click_my_info_link(self):
-        self.wait.until(EC.element_to_be_clickable(self.MY_INFO_BUTTON)).click()
+        self.button.do_click(DashboardPageLocators.MY_INFO_SPAN)
+

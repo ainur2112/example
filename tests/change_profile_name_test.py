@@ -15,6 +15,7 @@ class TestProfileFeature(BaseTest):
         self.login_page.enter_password(self.data.PASSWORD)
         self.login_page.click_submit_button()
         self.dashboard_page.is_opened()
+        self.dashboard_page.click_and_fill_search_menu("My Info")
         self.dashboard_page.click_my_info_link()
         self.personal_page.is_opened()
         self.personal_page.change_name(f"Test {random.randint(1, 100)}")

@@ -2,15 +2,21 @@ import allure
 from allure_commons.types import AttachmentType
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
+from elements.button import Button
+from elements.checkbox import Checkbox
+from elements.dropdown import DropDown
+from elements.field import Field
 
 
 class BasePage:
 
-
     def __init__(self, driver):
         self.driver = driver
         self.wait = WebDriverWait(driver, 10, poll_frequency=1)
+        self.button = Button(driver)
+        self.checkbox = Checkbox(driver)
+        self.dropdown = DropDown(driver)
+        self.field = Field(driver)
 
     def open(self):
         with allure.step(f"Open {self.PAGE_URL} page"):
