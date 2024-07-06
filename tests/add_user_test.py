@@ -8,7 +8,6 @@ class TestProfileFeature(BaseTest):
     @pytest.mark.skip
     @allure.title("Add user")
     @allure.severity("Critical")
-    @pytest.mark.smoke
     def test_add_user(self):
         self.login_page.open()
         self.login_page.enter_login(self.data.LOGIN)

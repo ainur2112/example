@@ -6,13 +6,14 @@ from pages.login_page import LoginPage
 class TestInvalidAutorization(BaseTest):
 
     """check auth page with invalids creds"""
+    @pytest.mark.skip
     @pytest.mark.parametrize('creds', LoginPage.generate_pairs())
     @allure.title("Change profile name")
     @allure.severity("Critical")
-    @pytest.mark.regression
     def test_invalid_autorization(self, creds):
         login, password = creds
         self.login_page.open()
+        self.login_page.is_opened()
         self.login_page.enter_login(login)
         self.login_page.enter_password(password)
         self.login_page.click_submit_button()

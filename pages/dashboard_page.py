@@ -22,3 +22,19 @@ class DashboardPage(BasePage):
     def click_my_info_link(self):
         self.button.do_click(DashboardPageLocators.MY_INFO_SPAN)
 
+    @allure.step("Navigate mouse on 'My Info' ")
+    def navigate_on_my_info(self):
+        self.visible_element(DashboardPageLocators.MY_INFO_SPAN)
+        self.button.navigate_mouse_on_element(DashboardPageLocators.MY_INFO_SPAN)
+
+    @allure.step("Navigate mouse on 'PIM' ")
+    def navigate_on_pim(self):
+        self.visible_element(DashboardPageLocators.PIM_SPAN)
+        self.button.navigate_mouse_on_element(DashboardPageLocators.PIM_SPAN)
+
+    @allure.step("Navigate mouse on 'Leave' ")
+    def navigate_on_leave(self):
+        self.visible_element(DashboardPageLocators.Leave_SPAN)
+        self.button.navigate_mouse_on_element(DashboardPageLocators.Leave_SPAN)
+
+

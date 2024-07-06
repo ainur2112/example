@@ -32,3 +32,6 @@ class BasePage:
             name=screenshot_name,
             attachment_type=AttachmentType.PNG
         )
+
+    def visible_element(self, by_locator: tuple):
+        self.wait.until(EC.visibility_of(self.driver.find_element(*by_locator)))

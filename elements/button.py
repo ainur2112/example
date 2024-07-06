@@ -43,6 +43,20 @@ class Button:
         actions.double_click(element)
         actions.perform()
 
+    def navigate_mouse_on_element(self, by_locator: tuple):
+        """
+        Навигация мышкой по элементам
+
+        :param by_locator:
+            локатор элемента
+
+        """
+
+        element = self.driver.find_element(*by_locator)
+        actions = AC(self.driver)
+        actions.move_to_element(element)
+        actions.perform()
+
     def press_button_escape(self):
         """ Нажатие кнопки ESCAPE """
 
