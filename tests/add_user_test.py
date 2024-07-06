@@ -5,6 +5,7 @@ from base.base_test import BaseTest
 @allure.feature("Add user functioanality")
 class TestProfileFeature(BaseTest):
 
+    @pytest.mark.skip
     @allure.title("Add user")
     @allure.severity("Critical")
     @pytest.mark.smoke

@@ -11,7 +11,7 @@ class BaseTest:
     login_page: LoginPage
     dashboard_page: DashboardPage
     personal_page: PersonalPage
-    admin_page : AdminPage
+    admin_page: AdminPage
     data: Data
 
     @pytest.fixture(autouse=True)
