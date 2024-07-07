@@ -11,26 +11,26 @@ class LoginPage(BasePage):
 
     @allure.step("Enter login")
     def enter_login(self, login):
-        self.wait.until(EC.element_to_be_clickable(LoginPageLocators.USERNAME_FIELD)).send_keys(login)
+        login_user = self.clickable_and_return_element(LoginPageLocators.USERNAME_FIELD)
+        login_user.send_keys(login)
 
     @allure.step("Enter password")
     def enter_password(self, password):
-        self.wait.until(EC.element_to_be_clickable(LoginPageLocators.PASSWORD_FIELD)).send_keys(password)
+        password_user = self.clickable_and_return_element(LoginPageLocators.PASSWORD_FIELD)
+        password_user.send_keys(password)
 
     @allure.step("Click submit button")
     def click_submit_button(self):
-        self.wait.until(EC.element_to_be_clickable(LoginPageLocators.SUBMIT_BUTTON)).click()
+        auth_button = self.clickable_and_return_element(LoginPageLocators.SUBMIT_BUTTON)
+        auth_button.click()
 
     def check_visible_alert_notification(self):
         self.wait.until(EC.text_to_be_present_in_element(LoginPageLocators.INVALID_CREDS_TEXT, "Invalid credentials"))
 
 
     """Generate pairs for invalid auth page"""
-    def generate_pairs():
+    def generate_pairs(logins, passwords):
 
-        """input parameters for the function generate_pairs"""
-        logins = ['invalid_login_0', 'invalid_login_1', 'invalid_login_2']
-        passwords = ['invalid_password_0', 'invalid_password_1', 'invalid_password_2']
 
         pairs = []
         for login in logins:
