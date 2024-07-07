@@ -12,6 +12,7 @@ def driver(request):
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--windows-size=1920,1080")
     driver = webdriver.Chrome(options=options)
+    driver.implicitly_wait(5)
     request.cls.driver = driver
     yield driver
     driver.quit()
