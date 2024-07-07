@@ -7,6 +7,7 @@ class TestMouseNavigateOnMenu(BaseTest):
 
     """check navigate mouse on menu"""
 
+
     @allure.title("Navigete mouse on menu")
     @allure.severity("Low")
     def test_navigate_on_menu(self):

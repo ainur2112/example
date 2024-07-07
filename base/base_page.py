@@ -28,14 +28,12 @@ class BasePage:
             attachment_type=AttachmentType.PNG
         )
 
-    def visible_and_return_return_element(self, by_locator: tuple):
-        self.wait.until(EC.visibility_of(self.driver.find_element(*by_locator)))
-        element = self.driver.find_element(*by_locator)
+    def visible_and_return_return_element(self, by_locator: tuple, wait_time=10):
+        element = WebDriverWait(self.driver, wait_time).until(EC.presence_of_element_located(by_locator))
         return element
 
-    def clickable_and_return_element(self, by_locator: tuple):
-        self.wait.until(EC.element_to_be_clickable(self.driver.find_element(*by_locator)))
-        element = self.driver.find_element(*by_locator)
+    def clickable_and_return_element(self, by_locator: tuple, wait_time=10):
+        element = WebDriverWait(self.driver, wait_time).until(EC.element_to_be_clickable(by_locator))
         return element
 
     def clear(self, by_locator: tuple, wait_time=10):

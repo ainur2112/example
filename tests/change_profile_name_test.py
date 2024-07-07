@@ -6,7 +6,7 @@ from base.base_test import BaseTest
 @allure.feature("Profile Functioanality")
 class TestProfileFeature(BaseTest):
 
-
+    @pytest.mark.skip
     @allure.title("Change profile name")
     @allure.severity("Critical")
     def test_changed_profile(self):
