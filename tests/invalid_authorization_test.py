@@ -11,7 +11,6 @@ class TestInvalidAutorization(BaseTest):
 
     """check auth page with invalids creds"""
 
-
     @pytest.mark.parametrize('creds', LoginPage.generate_pairs(INVALID_LOGINS, INVALID_PASSWORDS))
     @allure.title("Change profile name")
     @allure.severity("Critical")

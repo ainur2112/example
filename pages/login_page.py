@@ -11,19 +11,21 @@ class LoginPage(BasePage):
 
     @allure.step("Enter login")
     def enter_login(self, login):
-        login_user = self.clickable_and_return_element(LoginPageLocators.USERNAME_FIELD)
+        login_user = self.wait_clickable_element(LoginPageLocators.USERNAME_FIELD)
         login_user.send_keys(login)
 
     @allure.step("Enter password")
     def enter_password(self, password):
-        password_user = self.clickable_and_return_element(LoginPageLocators.PASSWORD_FIELD)
+        password_user = self.wait_clickable_element(LoginPageLocators.PASSWORD_FIELD)
         password_user.send_keys(password)
+
 
     @allure.step("Click submit button")
     def click_submit_button(self):
-        auth_button = self.clickable_and_return_element(LoginPageLocators.SUBMIT_BUTTON)
+        auth_button = self.wait_clickable_element(LoginPageLocators.SUBMIT_BUTTON)
         auth_button.click()
 
+    @allure.step("check visible alert_notification")
     def check_visible_alert_notification(self):
         self.wait.until(EC.text_to_be_present_in_element(LoginPageLocators.INVALID_CREDS_TEXT, "Invalid credentials"))
 

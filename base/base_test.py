@@ -7,6 +7,7 @@ from pages.admin_page import AdminPage
 from config.data import Data
 
 class BaseTest:
+    """Наследуемый класс при запуске тестов"""
 
     login_page: LoginPage
     dashboard_page: DashboardPage

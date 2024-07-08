@@ -1,12 +1,14 @@
 import random
 import allure
-import pytest
+from faker import Faker
 from base.base_test import BaseTest
 
 @allure.feature("Profile Functioanality")
 class TestProfileFeature(BaseTest):
 
-    @pytest.mark.skip
+    """Сделал экземляр класса Faker на русском"""
+    fake = Faker('ru_RU')
+
     @allure.title("Change profile name")
     @allure.severity("Critical")
     def test_changed_profile(self):
@@ -18,7 +20,9 @@ class TestProfileFeature(BaseTest):
         self.dashboard_page.click_and_fill_search_menu("My Info")
         self.dashboard_page.click_my_info_link()
         self.personal_page.is_opened()
-        self.personal_page.change_name(f"Test {random.randint(1, 100)}")
+        firstname = self.personal_page.change_first_name(self.fake.first_name_male())
+        middlename = self.personal_page.change_middle_name(self.fake.middle_name_male())
+        lastname = self.personal_page.change_last_name(self.fake.last_name_male())
         self.personal_page.save_changes()
-        self.personal_page.is_changes_saved()
+        self.personal_page.is_changes_saved(firstname, middlename, lastname)
         self.personal_page.make_screenshot("Success")

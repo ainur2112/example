@@ -5,8 +5,7 @@ from base.base_test import BaseTest
 @allure.feature("navigate mouse on menu")
 class TestMouseNavigateOnMenu(BaseTest):
 
-    """check navigate mouse on menu"""
-
+    """Проверка навигациями мышкой по меню"""
 
     @allure.title("Navigete mouse on menu")
     @allure.severity("Low")
