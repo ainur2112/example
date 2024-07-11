@@ -8,3 +8,4 @@ class Data:
     PASSWORD = os.getenv("PASSWORD")
     INVALID_LOGINS = os.getenv("INVALID_LOGIN")
     INVALID_PASSWORDS = os.getenv("INVALID_PASSWORDS")
+    SECRET_COMMENT = os.getenv("SECRET_COMMENT")

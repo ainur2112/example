@@ -19,3 +19,4 @@ class TestMouseNavigateOnMenu(BaseTest):
         self.dashboard_page.navigate_on_pim()
         self.dashboard_page.navigate_on_my_info()
         self.dashboard_page.navigate_on_leave()
+        self.login_page.make_screenshot("Success")

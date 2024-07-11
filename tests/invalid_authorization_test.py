@@ -22,5 +22,6 @@ class TestInvalidAutorization(BaseTest):
         self.login_page.enter_password(password)
         self.login_page.click_submit_button()
         self.login_page.check_visible_alert_notification()
+        self.login_page.make_screenshot("Success")
 
 

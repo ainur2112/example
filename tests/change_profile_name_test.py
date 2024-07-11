@@ -1,4 +1,3 @@
-import random
 import allure
 from faker import Faker
 from base.base_test import BaseTest
@@ -25,4 +24,4 @@ class TestProfileFeature(BaseTest):
         lastname = self.personal_page.change_last_name(self.fake.last_name_male())
         self.personal_page.save_changes()
         self.personal_page.is_changes_saved(firstname, middlename, lastname)
-        self.personal_page.make_screenshot("Success")
+        self.login_page.make_screenshot("Success")

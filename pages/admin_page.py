@@ -9,7 +9,7 @@ class AdminPage(BasePage):
     PAGE_URL = Links.ADMIN_PAGE
 
     def click_add_button(self):
-        self.visibility_of_element(AdminPageLocators.ADD_BUTTON)
-        self.do_click(AdminPageLocators.ADD_BUTTON).click()
+        self.find_element(AdminPageLocators.ADD_BUTTON)
+        self.do_click(AdminPageLocators.ADD_BUTTON)
 
 
