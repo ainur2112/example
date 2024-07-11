@@ -8,8 +8,20 @@ class AdminPage(BasePage):
 
     PAGE_URL = Links.ADMIN_PAGE
 
-    def click_add_button(self):
-        self.find_element(AdminPageLocators.ADD_BUTTON)
-        self.do_click(AdminPageLocators.ADD_BUTTON)
+    """ Заполнение значением поля "Username """
+    @allure.step("Fill value username")
+    def fill_value_username(self):
+        self.find_element(AdminPageLocators.USER_NAME_INPUT).send_keys("FMLName")
+
+    """ Нажатие на кнопку Seartch """
+    @allure.step("Clicl on button Search button")
+    def click_search_button(self):
+        self.do_click(AdminPageLocators.SEARCH_BUTTON)
+
+
+    """  Проверка на наличие записи с текстом FMLName """
+    @allure.step("Check existence entry with value FMLName")
+    def check_existence_entry(self):
+        assert self.find_element(AdminPageLocators.CHECK_EXISTENCE_ENTRY).text == "FMLName"
 
 

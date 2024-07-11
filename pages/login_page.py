@@ -31,6 +31,7 @@ class LoginPage(BasePage):
 
 
     """Generate pairs for invalid auth page"""
+    @allure.step("Generate pairs for invalid auth page")
     def generate_pairs(logins, passwords):
 
 
