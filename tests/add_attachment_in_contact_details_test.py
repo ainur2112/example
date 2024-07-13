@@ -22,4 +22,5 @@ class TestAddAttachmentInContactDetails(BaseTest):
         self.personal_page.check_succes_notification_visible()
         self.personal_page.check_add_entry_with_file()
         self.personal_page.delete_entry_with_file()
-
+        self.admin_page.scroll_to_bottom_limk_of_page()
+        time.sleep(4)

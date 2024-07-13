@@ -24,4 +24,8 @@ class AdminPage(BasePage):
     def check_existence_entry(self):
         assert self.find_element(AdminPageLocators.CHECK_EXISTENCE_ENTRY).text == "FMLName"
 
+    @allure.step("Scroll to bottom link of page")
+    def scroll_to_bottom_limk_of_page(self):
+        self.scroll_to_element(AdminPageLocators.BOTTOM_LINK_OF_PAGE)
+
 

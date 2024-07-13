@@ -113,6 +113,10 @@ class BasePage:
             actions.move_to_element(element)
             actions.perform()
 
+    def scroll_to_element(self, by_locator: tuple):
+        element = self.find_element(by_locator)
+        self.driver.execute_script('arguments[0].scrollIntoView();', element)
+
     def do_click(self, by_locator: tuple, wait_time: int = 10):
         """
         Клик на элемент
