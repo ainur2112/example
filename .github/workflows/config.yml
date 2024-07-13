@@ -1,30 +1,34 @@
 name: UI Tests
 
-on: workflow_dispatch
+on: [ push, workflow_dispatch]
 
 jobs:
   ui-tests:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Checkout (copy) gh-pages repository to GitHub runner
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           ref: gh-pages
           path: ./.github/gh-pages
 
-      - name: Run UI-tests via docker-compose
+      - name: Run UI Tests with Round
         env:
           LOGIN: ${{ secrets.LOGIN }}
           PASSWORD: ${{ secrets.PASSWORD }}
+          INVALID_LOGIN: ${{ secrets.INVALID_LOGIN }}
+          INVALID_PASSWORDS: ${{ secrets.INVALID_PASSWORDS }}
+          SECRET_COMMENT: ${{ secrets.SECRET_COMMENT }}
+
         run: |
           docker-compose up --exit-code-from regression || true
 
       - name: Copy history from gh-pages to allure-results
         run: |
-          sudo mkdir -p allure-results/history  # Создает директорию для истории Allure
+          sudo mkdir -p allure-results/history
           sudo cp -R ./.github/gh-pages/history/* allure-results/history/
 
       - name: Generate Allure report
@@ -36,7 +40,7 @@ jobs:
           sudo cp -R allure-report/history/* ./.github/gh-pages/history/
 
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.5
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           token: ${{ secrets.CI_TOKEN }}
           branch: gh-pages
